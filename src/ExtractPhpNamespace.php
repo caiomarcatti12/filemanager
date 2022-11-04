@@ -1,4 +1,5 @@
 <?php
+namespace CaioMarcatti12\FileManager;
 
 class ExtractPhpNamespace
 {
@@ -8,8 +9,8 @@ class ExtractPhpNamespace
 
         if(!is_dir($path)) return $fqcns;
 
-        $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
-        $phpFiles = new RegexIterator($allFiles, '/\.php$/');
+        $allFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+        $phpFiles = new \RegexIterator($allFiles, '/\.php$/');
         foreach ($phpFiles as $phpFile) {
             $content = file_get_contents($phpFile->getRealPath());
             $tokens = token_get_all($content);
